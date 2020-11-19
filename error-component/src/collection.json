@@ -1,0 +1,9 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "error-component": {
+      "description": "A blank schematic.",
+      "factory": "./error-component/index#errorComponent"
+    }
+  }
+}
