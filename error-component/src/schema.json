@@ -12,14 +12,14 @@
         "index": 0
       }
     },
-    "errorMessage": {
+    "featureName": {
       "type": "string",
-      "description": "Error message text",
+      "description": "Name of feature generating an error",
       "$default": {
         "$source": "argv",
         "index": 1
       }
     }
   },
-  "required": ["name", "errorMessage"]
+  "required": ["name", "featureName"]
 }
