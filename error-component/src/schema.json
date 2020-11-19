@@ -4,14 +4,22 @@
   "type": "object",
   "description": "Error component",
   "properties": {
-    "errorMessage": {
+    "name": {
       "type": "string",
-      "description": "error message",
+      "description": "Name of component",
       "$default": {
         "$source": "argv",
         "index": 0
       }
+    },
+    "errorMessage": {
+      "type": "string",
+      "description": "Error message text",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      }
     }
   },
-  "required": ["errorMessage"]
+  "required": ["name", "errorMessage"]
 }

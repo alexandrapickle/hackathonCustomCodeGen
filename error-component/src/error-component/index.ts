@@ -1,12 +1,27 @@
-import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import {
+  Rule,
+  SchematicContext,
+  Tree,
+  apply,
+  template,
+  url,
+  mergeWith,
+} from "@angular-devkit/schematics";
+import { strings } from "@angular-devkit/core";
 import { Schema } from "../schema";
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 export function errorComponent(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
-    const { errorMessage } = _options;
-    tree.create("/output/error-component.ts", `console.log(${errorMessage});`);
-    return tree;
+    const sourceTemplates = url("./files");
+
+    const sourceParametrizedTemplates = apply(sourceTemplates, [
+      template({
+        ..._options,
+        ...strings,
+      }),
+    ]);
+    return mergeWith(sourceParametrizedTemplates)(tree, _context);
   };
 }
